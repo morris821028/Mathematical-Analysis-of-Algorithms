@@ -1,0 +1,177 @@
+\ifx \allfiles \undefined
+\documentclass[12pt,a4paper,oneside]{report}
+
+\input{../config/package.tex}
+
+\begin{document}
+
+\subimport{../config/}{config.tex}
+
+\fi
+
+\setcounter{chapter}{7}
+\chapter{Discrete Probability}
+
+%\paragraph{} 前情提要
+
+\section{Analysis of Binary Tree Search}
+
+\begin{align*}
+	\left\{\begin{matrix*}[l]
+		X_n &:= \text{\# probes per succ search} \\
+		Y_n &:= \text{\# probes per unsucc search}
+	\end{matrix*}\right.
+\end{align*}
+\begin{align*}
+	\left\{\begin{matrix*}[l]
+		E(X) &= \frac{1}{6} \left(1+2+3+3+4+4\right) = \frac{17}{6} = 1 + \frac{\upvartheta(T)}{6} \\
+		E(Y) &= \frac{1}{7} \left(4+4+3+4+4+3+1\right) = \frac{23}{7} = \frac{\varepsilon(T)}{7}
+	\end{matrix*}\right.
+\end{align*}
+\begin{align*}
+	\left\{\begin{matrix*}[l]
+		\upvartheta(T) &:= \sum_{x : \text{int node of } T} \text{path length}(x) = 11\\
+		\varepsilon(T) &:= \sum_{y : \text{ext node of } T} \text{path length}(y) = 23
+	\end{matrix*}\right.
+\end{align*}
+\subimport{./images/ch08/}{bst-example1.tex}
+
+\begin{align*}
+	\left\{\begin{matrix*}[l]
+		\Omega_{X_n} &= \left\{(x_1, x_2, \cdots, x_n; k) | 
+				(x_1, x_2, \cdots, x_n) \in S_n, \; 1 \le k \le n
+		\right\} \\
+		\Omega_{Y_n} &= \left\{(x_1, x_2, \cdots, x_n; y) | 
+				(x_1, x_2, \cdots, x_n) \in S_n, \; y = 0.5, \; 1.5, \; \cdots, \; n.5
+		\right\}
+	\end{matrix*}\right. 
+\end{align*}
+\begin{align*}
+|\Omega_{X_n}| = n \cdot n! , \; |\Omega_{Y_n}| = (n+1)!
+\end{align*}
+
+\begin{table}[]
+	\centering
+	\caption{Analysis of Binary Tree Search}
+	\label{bst}
+	\begin{tabular}{|c | c | c | c | c|}
+		\hline
+		n & 1 & 2 & 3 &
+		\\ \hline
+		$E(X_m) = 2 \frac{n+1}{n} H_n - 3$ & 1 & $\frac{3}{2}$ & $\frac{17}{9}$ & $\cdots$ 
+		\\ \hline
+		$E(Y_m) = 2 H_{n+1} - 2$ & 1 & $\frac{5}{3}$ & $\frac{13}{6}$ & $\cdots$ 
+		\\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{description}
+	\item[\framebox{$n=1$}]
+		\subimport{./images/ch08/}{bst-n1.tex}
+		\begin{align*}
+			\left\{\begin{matrix*}[l]
+				E(X_1) &= \frac{1}{1} \left[1\right] = 1 \\
+				E(Y_1) &= \frac{1}{2} \left[1+1\right] = 1 \\
+			\end{matrix*}\right.
+		\end{align*}
+	\item[\framebox{$n=2$}]
+		\subimport{./images/ch08/}{bst-n2.tex}
+		\begin{align*}
+			\left\{\begin{matrix*}[l]
+				E(X_2) &= \frac{1}{2 \cdot 2!} \left[(1+2) + (1+2)\right] 
+						= \frac{3}{2} \\
+				E(Y_2) &= \frac{1}{3 \cdot 3!} \left[(1+2+2) + (2+2+1)\right] 
+						= \frac{5}{3}
+			\end{matrix*}\right.
+		\end{align*}
+	\item[\framebox{$n=3$}]
+		\subimport{./images/ch08/}{bst-n3.tex}
+		\begin{align*}
+			\left\{\begin{matrix*}[l]
+				E(X_3) &= \frac{1}{3 \cdot 3!} \left[(1+2+3) + (1+2+3) +
+							(1+2+2) + (\cdot) + (\cdot) + (\cdot) \right]
+						= \frac{17}{9} \\
+				E(Y_3) &= \frac{1}{4 \cdot 3!} \left[(1+2+3+3) + (1+2+3+3) +
+							(2+2+2+2) + (\cdot) + (\cdot) + (\cdot) \right] 
+						= \frac{13}{6}
+			\end{matrix*}\right.
+		\end{align*}
+\end{description}
+
+\begin{theorem}
+$n$-node binary tree $T$ has $2N$ edges, $N+1$ external nodes, and $\varepsilon(T)=\upvartheta(T)+2N$. 
+\end{theorem}
+
+\begin{theorem}
+\begin{align*}
+	\left\{\begin{matrix*}[l]
+		E(X_n) &= 2 \frac{n+1}{n} H_n - 3 &\approx 2 \ln n \\
+		E(Y_n) &= 2 H_{n+1} - 2 &\approx 2 \ln n
+	\end{matrix*}\right.
+\end{align*}
+\begin{align*}
+	\left\{\begin{matrix*}[l]
+		E(X_n) 
+			&= \sum\limits_{w \in \Omega_{X_n} } P(w) X_n(w) 
+				= \sum\limits_{(x_1, \cdots, x_n) \in S_n \atop 1 \le k \le n} 
+					\frac{1}{n \cdot n!} X_n (x_1, \cdots, x_n ; k) \\
+			&= \frac{1}{n \cdot n!} 
+				\sum\limits_{(x_1, \cdots, x_n) \in S_n} \sum\limits_{1 \le k \le n} 
+					X_n (x_1, \cdots, x_n ; k) \\
+			&= \frac{1}{n \cdot n!} \sum\limits_{T} \left(n + \upvartheta(T) \right) 
+				= \frac{1}{n} 
+					\left[ n + \frac{1}{n!} \sum\limits_{T} \upvartheta(T)\right]\\
+		E(Y_n) 
+			&= \frac{1}{(n+1)!} \sum\limits_{(x_1, \cdots, x_n) \in S_n}
+					\sum\limits_{y = 0.5, \cdots, n.5} Y_n(x_1 , \cdots, x_n ; y) \\
+			&= \frac{1}{(n+1)!} \sum\limits_{T} \varepsilon(T) 
+				= \frac{1}{(n+1) \cdot n!} \sum\limits_{T} \left(2n + \upvartheta(T)\right) \\
+			&= \frac{1}{n+1} \left[2n + \frac{1}{n!} \sum\limits_{T} \upvartheta(T)\right]
+	\end{matrix*}\right.
+\end{align*}
+\end{theorem}
+
+\begin{align*}
+	(n+1) E(Y_n) &= \sum\limits_{1 \le k \le n} E(Y_{k-1}) + 2n 
+		&& \text{(1)} \\
+	n E(Y_{n-1}) &= \sum\limits_{1 \le k \le n-1} E(Y_{k-1}) + 2(n-1)
+		&& \text{(2)} \\
+	\text{(1)} - \text{(2)} &=\\
+		& \qquad
+		\begin{matrix*}[l]
+		 	(n+1) &E(Y_n) &=& (n+1) E(Y_{n-1}) + 2 \\
+			&E(Y_n) &=& E(Y_{n-1}) + \frac{2}{n+1} \\
+			& & \vdots &\\
+			&E(Y_2) &=& E(Y_1) + \frac{2}{3}
+		\end{matrix*} \\
+	&\Rightarrow
+		\left\{\begin{matrix*}[l]
+			E(Y_n) &= 2 H_{n+1} - 2 \\
+			E(X_n) &= \frac{n+1}{n} E(Y_{n}) - 1 \\
+				&= 2 \frac{n+1}{n} H_n - 3
+		\end{matrix*}\right.
+\end{align*}
+
+\begin{align*}
+E(X_n) 
+	&= \frac{1}{n \cdot n!} \sum\limits_{(x_1, \cdots, x_n)} 
+		\sum_{1 \le k \le n} X_n (x_1, \cdots, x_n ; k) \\
+	&= \frac{1}{n \cdot n!} \sum\limits_{(x_1, \cdots, x_n) \in S_n}
+		\sum\limits_{1 \le k \le n} 1 + Y_n (x_1, \cdots, x_{k-1} ; k) \\
+	&= 1 + \frac{1}{n \cdot n!} \sum\limits_{1 \le k \le n}
+		\sum\limits_{(x_1, \cdots, x_{k}) \in S_k} 
+			n \cdot (k+1) Y_{k-1} (x_1, \cdots, x_{k-1}; x_k) \\
+	&= 1 + \frac{1}{n} \sum\limits_{1 \le k \le n}
+		\sum\limits_{(x_1, \cdots, x_{k}) \in S_k} 
+			Y_{k-1} (x_1, \cdots, x_{k-1}; x_k) \\
+	&= 1 + \frac{1}{n} \sum\limits_{1 \le k \le n} E(Y_{k-1})
+\end{align*}
+
+\ifx \allfiles \undefined
+
+\printindex[noun]
+\clearpage
+
+\end{document}
+
+\fi

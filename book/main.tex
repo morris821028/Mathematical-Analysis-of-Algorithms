@@ -1,0 +1,25 @@
+\documentclass[11pt, a4paper, fleqn]{book}
+\def \allfiles {}
+
+\input{./config/package.tex}
+
+% start content
+\begin{document}
+
+\subimport{./config/}{lang-zh.tex}
+
+
+\title{\bfseries{\sc 演算法數學分析}}
+\date{}
+\maketitle
+
+%\begin{multicols}{2}
+\tableofcontents
+%\end{multicols}
+
+\subimport{./chapter/}{08.tex}
+
+%\printindex
+
+%\clearpage
+\end{document}
