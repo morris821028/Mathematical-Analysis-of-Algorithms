@@ -37,17 +37,20 @@
 \subimport{./images/ch08/}{bst-example1.tex}
 
 \begin{align*}
-	\left\{\begin{matrix*}[l]
-		\Omega_{X_n} &= \left\{(x_1, x_2, \cdots, x_n; k) | 
-				(x_1, x_2, \cdots, x_n) \in S_n, \; 1 \le k \le n
-		\right\} \\
-		\Omega_{Y_n} &= \left\{(x_1, x_2, \cdots, x_n; y) | 
-				(x_1, x_2, \cdots, x_n) \in S_n, \; y = 0.5, \; 1.5, \; \cdots, \; n.5
-		\right\}
+	\text{Sample Space} = \left\{\begin{matrix*}[l]
+		\Omega_{X_n} &= \left\{(x_1, x_2, \cdots, x_n; k) 
+			\left|\begin{matrix}
+				(x_1, x_2, \cdots, x_n) \in S_n \\ 
+				1 \le k \le n
+			\end{matrix}\right. 
+		\right\} &, |\Omega_{X_n}| = n \cdot n! \\
+		\Omega_{Y_n} &= \left\{(x_1, x_2, \cdots, x_n; y)
+	   		\left|\begin{matrix}	
+				(x_1, x_2, \cdots, x_n) \in S_n \\
+				y = 0.5, \; 1.5, \; \cdots, \; n.5
+			\end{matrix}\right.
+		\right\} &, |\Omega_{Y_n}| = (n+1)!
 	\end{matrix*}\right. 
-\end{align*}
-\begin{align*}
-|\Omega_{X_n}| = n \cdot n! , \; |\Omega_{Y_n}| = (n+1)!
 \end{align*}
 
 \begin{table}[]
