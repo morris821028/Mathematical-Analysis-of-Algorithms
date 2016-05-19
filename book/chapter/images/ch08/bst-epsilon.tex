@@ -1,0 +1,18 @@
+\tikzset{
+treeInode/.style = {align=center, inner sep=0pt, text centered,
+	    font=\sffamily, text width=0.5em},
+itria/.style={
+  draw,shape border uses incircle,
+  isosceles triangle,shape border rotate=90},
+}
+\usetikzlibrary{shapes.geometric}
+\begin{tikzpicture}[-,>=stealth',level/.style={sibling distance = 3cm/#1,
+  level distance = 1cm}] 
+\node[circle,draw,fill=black, treeInode] {}
+    child{ node[circle, fill = black, itria] {}
+		edge from parent node[below right]{1 more to $\varepsilon$} %for a named pointer
+    }
+	child[missing]{
+	}
+    ;
+\end{tikzpicture}

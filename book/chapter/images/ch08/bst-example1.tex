@@ -6,7 +6,9 @@
   arn_n/.style = {treeInode, circle, black, draw=black,  
 	  text width=1.5em},% arbre rouge noir, noeud noir
   arn_x/.style = {treeEnode, rectangle, draw=black,
-    minimum width=1.5em, minimum height=1.5em}% arbre rouge noir, nil
+    minimum width=1.5em, minimum height=1.5em},% arbre rouge noir, nil
+  arn_m/.style = {treeIode, circle, black, draw=black,  
+	  text width=1.5em},% arbre rouge noir, noeud noir
 }
 \usetikzlibrary{patterns}
 \begin{tikzpicture}[-,>=stealth',level/.style={sibling distance = 5cm/#1,
@@ -57,4 +59,5 @@
 \draw (0.5,3pt) node[above] {3.5};
 \draw (0.5,0.5pt) node[above] {$\downarrow$};
 \draw[pattern=north west lines, pattern color=black] (0.4,-.02) rectangle (0.6,0.02);
+
 \end{tikzpicture}
