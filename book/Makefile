@@ -5,8 +5,8 @@ LATEX_ENGINE=xelatex
 .PHONY: main clean spell-check
 
 main: main.tex
-	$(LATEX_ENGINE) main.tex
-	$(LATEX_ENGINE) main.tex
+	$(LATEX_ENGINE) -interaction nonstopmode main.tex
+#	$(LATEX_ENGINE) -interaction nonstopmode main.tex
 
 spell-check: $(TEX_FILE)
 	aspell --mode=tex list < main.tex

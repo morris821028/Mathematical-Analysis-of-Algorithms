@@ -32,8 +32,8 @@
 \end{align*}
 \begin{align*}
 	\left\{\begin{matrix*}[l]
-		\upvartheta(T) &:= \sum_{x : \text{int node of } T} \text{path length}(x) = 11\\
-		\varepsilon(T) &:= \sum_{y : \text{ext node of } T} \text{path length}(y) = 23
+		\upvartheta(T) &:= \mathlarger{\sum}\limits_{x : \text{int node of } T} \text{path length}(x) = 11\\
+		\varepsilon(T) &:= \mathlarger{\sum}\limits_{y : \text{ext node of } T} \text{path length}(y) = 23
 	\end{matrix*}\right.
 \end{align*}
 \subimport{./images/ch08/}{bst-example1.tex}
@@ -118,7 +118,11 @@ $n$-node binary tree $T$ has $2N$ edges, $N+1$ external nodes, and $\varepsilon(
 	\left\{\begin{matrix*}[l]
 		E(X_n) 
 			&= \sum\limits_{w \in \Omega_{X_n} } P(w) X_n(w) 
-				= \sum\limits_{(x_1, \cdots, x_n) \in S_n \atop 1 \le k \le n} 
+				= \sum\limits_{
+						\substack{
+						(x_1, \cdots, x_n) \in S_n \\ 
+						1 \le k \le n
+						}} 
 					\frac{1}{n \cdot n!} X_n (x_1, \cdots, x_n ; k) \\
 			&= \frac{1}{n \cdot n!} 
 				\sum\limits_{(x_1, \cdots, x_n) \in S_n} \sum\limits_{1 \le k \le n} 
@@ -145,9 +149,9 @@ $n$-node binary tree $T$ has $2N$ edges, $N+1$ external nodes, and $\varepsilon(
 		& \qquad
 		\begin{matrix*}[l]
 		 	(n+1) &E(Y_n) &=& (n+1) E(Y_{n-1}) + 2 \\
-			&E(Y_n) &=& E(Y_{n-1}) + \frac{2}{n+1} \\
+			&E(Y_n) &=& \cancel{E(Y_{n-1})} + \frac{2}{n+1} \\
 			& & \vdots &\\
-			&E(Y_2) &=& E(Y_1) + \frac{2}{3}
+			&\cancel{E(Y_2)} &=& E(Y_1) + \frac{2}{3}
 		\end{matrix*} \\
 	&\Rightarrow
 		\left\{\begin{matrix*}[l]
