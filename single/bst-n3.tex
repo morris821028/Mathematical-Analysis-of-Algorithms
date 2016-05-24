@@ -13,30 +13,6 @@
 \begin{tikzpicture}[-,>=stealth',level/.style={sibling distance = 1cm/#1,
   level distance = 0.5cm}] 
 \node[arn_n]{}
-	child{
-		node[arn_x]{}
-	}
-	child{
-		node[arn_n]{}
-    child{
-      node[arn_n]{}
-      child{
-        node[arn_x]{}
-      }
-      child{
-        node[arn_x]{}
-      }
-    }
-    child{
-      node[arn_x]{}
-    }
-	}
-; 
-\node[below=2.0cm, align=flush center,text width=2cm]{$(1, 2, 3)$};
-\end{tikzpicture}
-\begin{tikzpicture}[-,>=stealth',level/.style={sibling distance = 1cm/#1,
-  level distance = 0.5cm}] 
-\node[arn_n]{}
   child{
     node[arn_x]{}
   }
@@ -53,6 +29,30 @@
       child{
         node[arn_x]{}
       }
+    }
+  }
+; 
+\node[below=2.0cm, align=flush center,text width=2cm]{$(1, 2, 3)$};
+\end{tikzpicture}
+\begin{tikzpicture}[-,>=stealth',level/.style={sibling distance = 1cm/#1,
+  level distance = 0.5cm}] 
+\node[arn_n]{}
+  child{
+    node[arn_x]{}
+  }
+  child{
+    node[arn_n]{}
+    child{
+      node[arn_n]{}
+      child{
+        node[arn_x]{}
+      }
+      child{
+        node[arn_x]{}
+      }
+    }
+    child{
+      node[arn_x]{}
     }
   }
 ; 
